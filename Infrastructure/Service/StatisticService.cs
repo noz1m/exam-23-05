@@ -23,8 +23,8 @@ public class StatisticService(DataContext context) : IStatisticService
                     limit 5";
         var result =  await connection.QueryAsync<Comment>(sql);
         return result == null
-            ? new Response<Comment>("Comment not found", HttpStatusCode.NotFound)
-            : new Response<Comment>(result.ToList(), "Comment found");
+            ? new Response<List<Comment>>("Comment not found", HttpStatusCode.NotFound)
+            : new Response<List<Comment>>(result.ToList(), "Comment found");
     }
     public async Task<Response<List<Article>>> GetRecentArticlesAsync()
     {
